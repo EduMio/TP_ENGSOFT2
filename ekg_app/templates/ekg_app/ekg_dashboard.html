@@ -1,0 +1,61 @@
+{% extends "admin/base_site.html" %}
+
+{% load static %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">
+    {# {{ site_header|default:_('Django administration') }} #}  
+    ECG management system </a></h1> 
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/ekg_dashboard.css' %}">
+
+    <div class="dashboard-container"> 
+        <div class="priority-container">
+            <h2>Por Prioridade:</h2>  
+            <div class="priority-item urgent">
+                <a href="?patient__risk_level=1&status=1" class="priority-link">
+                    <span class="priority-label">Urgente</span>
+                    <span class="priority-count">{{ high_risk_ekg_list| length }}</span>
+                </a>
+            </div>
+
+            <div class="priority-item preferential">
+                <a href="?patient__risk_level=2&status=1" class="priority-link">
+                    <span class="priority-label">Preferenciais</span>
+                    <span class="priority-count">{{ medium_risk_ekg_list | length }}</span>
+                </a>
+            </div>
+
+            <div class="priority-item elective">
+                <a href="?patient__risk_level=3&status=1" class="priority-link">
+                    <span class="priority-label">Eletivos</span>
+                    <span class="priority-count">{{ low_risk_ekg_list | length }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="status-container">
+            <h2>Por status:</h2>  
+
+            <div class="status-item queue">
+            <a href="?status=1" class="status-link"> 
+                <span class="status-icon">
+                </span>
+                <span class="status-label">Na Fila: </span>
+                <span class="status-count">{{ ekg_in_queue | length }}</span>
+            </a>
+            </div>
+        
+            <div class="status-item analysis">
+            <a href="?status=2" class="status-link">
+                <span class="status-icon">
+                </span>
+                <span class="status-label">Concluidos:</span>
+                <span class="status-count">{{ ekg_completed | length }}</span>
+            </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
