@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>Patient Dashboard</h1>
+    <h2>Lista de Pacientes</h2>
     <ul>
         {% for patient in patients %}
-            <li>{{ patient.user.username }} - Risk Level: {{ patient.risk_level }}</li>
+            <li>{{ patient.name }} - Nível de Risco: {{ patient.risk_level }}</li>
         {% endfor %}
     </ul>
 </body>

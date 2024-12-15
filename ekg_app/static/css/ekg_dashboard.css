@@ -1,0 +1,143 @@
+.dashboard-container {
+    display: flex;              /* Torna o contêiner pai um flex container */
+    gap: 90px;                 /* Espaço entre os contêineres filhos */
+    align-items: flex-start;    /* Alinha os itens no topo */
+}
+
+.priority-container {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 15px;
+}
+
+.priority-container a {
+    color: inherit; /* Herda a cor do elemento pai */
+    text-decoration: none; /* Remove a sublinha */
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    padding: 30px 30px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    min-height: 100px;
+}
+
+.priority-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.urgent {
+    background-color: #f44336;
+    color: white;
+}
+
+.preferential {
+    background-color: #ff9800;
+    color: white;
+}
+
+.elective {
+    background-color: #4caf50;
+    color: white;
+}
+
+.priority-count {
+    font-size: 22px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.priority-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    gap: 10px;
+    width: 350px; /* Reduzindo a largura */
+    max-width: 350px; /* Largura máxima, ajustável */
+    margin-top: 4px; /* Espaçamento superior */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+}
+
+.status-item {
+    display: flex;
+    align-items: center;  /* Vertically center the content */
+    justify-content: flex-start; /* Align items to the left */
+    padding: 25px 30px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 110px;
+    /* Remove text-align: center; or set it to left if present */
+    text-align: left; /* Explicitly set text alignment to left */
+    flex-direction: row; /* Ensure items are in a row (though likely already the case) */
+    color: white;
+    flex: 1; 
+}
+
+.status-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.status-item a {
+    text-decoration: none; /* Remove a decoração padrão do link */
+    color: inherit; /* Herda a cor do elemento pai */
+}
+
+.queue {
+    background-color: #2196f3; /* Azul */
+    margin-bottom: 8px;
+}
+
+.analysis {
+    background-color: #4caf50; /* Verde */
+}
+
+.status-icon {
+    display: inline-block; /* Para poder definir width e height */
+    width: 24px;
+    height: 24px;
+    margin-bottom: 10px; /* Espaço inferior para o ícone */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.status-count {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.status-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) { /* Ajusta para telas maiores */
+    .status-container {
+        flex-direction: column; /* Itens em linha */
+        align-items: stretch; /* Estica os itens verticalmente */
+    }
+    .status-item {
+        flex: 1; /* Garante que os itens ocupem espaço igual */
+    }
+}
+
+@media (max-width: 767px) { /* Para telas menores, coloca um abaixo do outro */
+    .dashboard-container {
+        flex-direction: column;
+    }
+}
