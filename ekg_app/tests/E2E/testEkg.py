@@ -11,6 +11,9 @@ import time
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 
 def create_fake_pdf(file_path):
@@ -23,7 +26,14 @@ def create_fake_pdf(file_path):
 
 class TestEKGUploadAndReport(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+
+        service = Service(ChromeDriverManager().install())
+        self.browser = webdriver.Chrome(service=service, options=chrome_options)
+
         self.user = User.objects.create_superuser(
             username="tempuser", 
             password="tempPassword123", 
