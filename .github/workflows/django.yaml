@@ -32,5 +32,5 @@ jobs:
 
     - name: Run Django Tests
       run: |
-        python manage.py test
+        python3 manage.py test ./ekg_app/tests/ ./ekg_app/tests/E2E
       shell: bash
